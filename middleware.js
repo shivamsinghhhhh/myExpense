@@ -36,17 +36,18 @@ const aj = arcjet({
 // Create Clerk middleware to handle user authentication for protected routes
 const clerk = clerkMiddleware(async (auth, req) => {
   try {
-    const { userId } = await auth();
+    const { userId, redirectToSignIn } = await auth();
 
     if (!userId && isProtectedRoute(req)) {
-      const { redirectToSignIn } = await auth();
-      return redirectToSignIn();
+      const signInUrl = redirectToSignIn().headers.get("Location");
+      return NextResponse.redirect(new URL(signInUrl ?? "/sign-in", req.url));
     }
 
     return NextResponse.next();
   } catch (error) {
     console.error("Error in Clerk Middleware:", error);
-    return NextResponse.redirect("/error"); // Redirect to an error page in case of issues
+    // ✅ Use absolute URL for redirection
+    return NextResponse.redirect(new URL("/error", req.url));
   }
 });
 

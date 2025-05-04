@@ -53,24 +53,7 @@ export default function Home() {
     </section>
 
 
-    <section className="py-20 bg-blue-600">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-center mb-4">Ready To Take Control of Your Finances?</h2>
-        <p className="text-blue-100 mb-8 max-w-2xl mx-auto">Join if you want to manage your expenses smarter with myExpense
-        </p>
-        <Link href="/dashboard">
-        <Button
-        size='lg'
-        className="bg-white text-blue-600 hover:bg-blue-50 animate-bounce"
-        >
-        Start Free Trial
-        </Button>
-        </Link>
-
-      </div>
-      
-    </section>
-
+ 
 
     
   </div>
