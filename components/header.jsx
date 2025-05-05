@@ -21,10 +21,6 @@ const Header = async () => {
             className="h-12 w-auto object-contain"
           />
         </Link>
-
-        {/* Navigation Links - Different for signed in/out users */}
-  
-
         {/* Action Buttons */}
         <div className="flex items-center space-x-4">
           <SignedIn>

@@ -10,24 +10,23 @@ const isProtectedRoute = createRouteMatcher([
   "/settings(.*)", // Added settings route as an example
 ]);
 
-// Create ArcJet middleware with bot detection and content shielding
+
 const aj = arcjet({
   key: process.env.ARCJET_KEY,
   rules: [
-    // Shield protection for content and security
+  
     shield({
       mode: "LIVE",
     }),
     detectBot({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+      mode: "LIVE",
       allow: [
-        "CATEGORY:SEARCH_ENGINE", // Allow search engines (Google, Bing, etc)
-        "GO_HTTP", // Allow specific HTTP clients like Inngest
-        // Add any other allowed categories or bots here
+        "CATEGORY:SEARCH_ENGINE", 
+        "GO_HTTP", 
       ],
       block: [
-        // You can block specific bots or categories here if needed
-        "CATEGORY:BAD_BOTS", // Example of blocking bad bots
+       
+        "CATEGORY:BAD_BOTS",
       ],
     }),
   ],
